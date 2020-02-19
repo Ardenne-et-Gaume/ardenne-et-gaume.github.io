@@ -1,0 +1,2995 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.wms.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/QualitdeleaudesZN_2.js"></script>
+        <script src="data/InclinaisondesbergesdesZH_3.js"></script>
+        <script src="data/EnsoleillementdesZH_4.js"></script>
+        <script src="data/ZHtemporairesetpermanentes_5.js"></script>
+        <script src="data/ClassesdepronfondeurmaximalesdesZH_6.js"></script>
+        <script src="data/Classesdepentesdanslesfriches_7.js"></script>
+        <script src="data/Recouvrementdusoldanslesfriches_8.js"></script>
+        <script src="data/Recouvrementarbustifdanslesfriches_9.js"></script>
+        <script src="data/Typesdhabitats2019_10.js"></script>
+        <script src="data/HabitatsWalEUNIS_11.js"></script>
+        <script src="data/DonnesbiologiquesAG2019_12.js"></script>
+        <script src="data/Zonedtudeen2019_13.js"></script>
+        <script src="data/Zoneinterditeen2019_14.js"></script>
+        <script src="data/Transectsentomologiques2019_15.js"></script>
+        <script src="data/Placettesentomologiques2019_16.js"></script>
+        <script src="data/PhasageduprojetZones_17.js"></script>
+        <script src="data/Donnesodonatesremarquables2019_18.js"></script>
+        <script src="data/Donnesherptologiques2019_19.js"></script>
+        <script src="data/Donnesfloreavant2019_20.js"></script>
+        <script src="data/Donnesflore2019_21.js"></script>
+        <script src="data/Espcesvgtaleexotiquesenvahissantes2019_22.js"></script>
+        <script src="data/Stationsfloregroupedrogation2019_23.js"></script>
+        <script src="data/Stationsfloreremarquable2019_24.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[50.427636447558875,4.552921666149706],[50.435225032856756,4.568369344315551]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            map.setMaxBounds(map.getBounds());
+        }
+        var img_PentesPartieSud_0 = 'data/PentesPartieSud_0.png';
+        var img_bounds_PentesPartieSud_0 = [[50.42657629117383,4.55605529261417],[50.43089996405451,4.566417346452555]];
+        var layer_PentesPartieSud_0 = new L.imageOverlay(img_PentesPartieSud_0, img_bounds_PentesPartieSud_0);
+        bounds_group.addLayer(layer_PentesPartieSud_0);
+        map.addLayer(layer_PentesPartieSud_0);
+        var img_PentespartieNord_1 = 'data/PentespartieNord_1.png';
+        var img_bounds_PentespartieNord_1 = [[50.43041436361653,4.555573953936596],[50.43515310780061,4.566931735357658]];
+        var layer_PentespartieNord_1 = new L.imageOverlay(img_PentespartieNord_1, img_bounds_PentespartieNord_1);
+        bounds_group.addLayer(layer_PentespartieNord_1);
+        map.addLayer(layer_PentespartieNord_1);
+        function pop_QualitdeleaudesZN_2(feature, layer) {
+        }
+
+        function style_QualitdeleaudesZN_2_0(feature) {
+            switch(String(feature.properties['Qualit eau'])) {
+                case 'Boueuse':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,74,71,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Fluctuante':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,202,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Trouble':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(158,181,183,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Mésotrophe':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,196,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Eutrophe':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,161,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'A sec':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,107,102,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bonne':
+                    return {
+                pane: 'pane_QualitdeleaudesZN_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_QualitdeleaudesZN_2');
+        map.getPane('pane_QualitdeleaudesZN_2').style.zIndex = 402;
+        map.getPane('pane_QualitdeleaudesZN_2').style['mix-blend-mode'] = 'normal';
+        var layer_QualitdeleaudesZN_2 = new L.geoJson(json_QualitdeleaudesZN_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_QualitdeleaudesZN_2',
+            layerName: 'layer_QualitdeleaudesZN_2',
+            pane: 'pane_QualitdeleaudesZN_2',
+            onEachFeature: pop_QualitdeleaudesZN_2,
+            style: style_QualitdeleaudesZN_2_0,
+        });
+        bounds_group.addLayer(layer_QualitdeleaudesZN_2);
+        map.addLayer(layer_QualitdeleaudesZN_2);
+        function pop_InclinaisondesbergesdesZH_3(feature, layer) {
+        }
+
+        function style_InclinaisondesbergesdesZH_3_0(feature) {
+            switch(String(feature.properties['Incl berge'])) {
+                case 'Faible':
+                    return {
+                pane: 'pane_InclinaisondesbergesdesZH_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Moyenne':
+                    return {
+                pane: 'pane_InclinaisondesbergesdesZH_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,196,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Moyenne à forte':
+                    return {
+                pane: 'pane_InclinaisondesbergesdesZH_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,202,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Forte':
+                    return {
+                pane: 'pane_InclinaisondesbergesdesZH_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,74,71,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_InclinaisondesbergesdesZH_3');
+        map.getPane('pane_InclinaisondesbergesdesZH_3').style.zIndex = 403;
+        map.getPane('pane_InclinaisondesbergesdesZH_3').style['mix-blend-mode'] = 'normal';
+        var layer_InclinaisondesbergesdesZH_3 = new L.geoJson(json_InclinaisondesbergesdesZH_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_InclinaisondesbergesdesZH_3',
+            layerName: 'layer_InclinaisondesbergesdesZH_3',
+            pane: 'pane_InclinaisondesbergesdesZH_3',
+            onEachFeature: pop_InclinaisondesbergesdesZH_3,
+            style: style_InclinaisondesbergesdesZH_3_0,
+        });
+        bounds_group.addLayer(layer_InclinaisondesbergesdesZH_3);
+        map.addLayer(layer_InclinaisondesbergesdesZH_3);
+        function pop_EnsoleillementdesZH_4(feature, layer) {
+        }
+
+        function style_EnsoleillementdesZH_4_0(feature) {
+            switch(String(feature.properties['Ensoleille'])) {
+                case 'Nul':
+                    return {
+                pane: 'pane_EnsoleillementdesZH_4',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,74,71,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Quasi nul':
+                    return {
+                pane: 'pane_EnsoleillementdesZH_4',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,202,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Partiel':
+                    return {
+                pane: 'pane_EnsoleillementdesZH_4',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Presque total':
+                    return {
+                pane: 'pane_EnsoleillementdesZH_4',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,196,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Total':
+                    return {
+                pane: 'pane_EnsoleillementdesZH_4',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,161,174,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_EnsoleillementdesZH_4');
+        map.getPane('pane_EnsoleillementdesZH_4').style.zIndex = 404;
+        map.getPane('pane_EnsoleillementdesZH_4').style['mix-blend-mode'] = 'normal';
+        var layer_EnsoleillementdesZH_4 = new L.geoJson(json_EnsoleillementdesZH_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_EnsoleillementdesZH_4',
+            layerName: 'layer_EnsoleillementdesZH_4',
+            pane: 'pane_EnsoleillementdesZH_4',
+            onEachFeature: pop_EnsoleillementdesZH_4,
+            style: style_EnsoleillementdesZH_4_0,
+        });
+        bounds_group.addLayer(layer_EnsoleillementdesZH_4);
+        map.addLayer(layer_EnsoleillementdesZH_4);
+        function pop_ZHtemporairesetpermanentes_5(feature, layer) {
+        }
+
+        function style_ZHtemporairesetpermanentes_5_0(feature) {
+            switch(String(feature.properties['Temporaire'])) {
+                case 'Non':
+                    return {
+                pane: 'pane_ZHtemporairesetpermanentes_5',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,196,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Oui':
+                    return {
+                pane: 'pane_ZHtemporairesetpermanentes_5',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Assec perm':
+                    return {
+                pane: 'pane_ZHtemporairesetpermanentes_5',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,202,174,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ZHtemporairesetpermanentes_5');
+        map.getPane('pane_ZHtemporairesetpermanentes_5').style.zIndex = 405;
+        map.getPane('pane_ZHtemporairesetpermanentes_5').style['mix-blend-mode'] = 'normal';
+        var layer_ZHtemporairesetpermanentes_5 = new L.geoJson(json_ZHtemporairesetpermanentes_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ZHtemporairesetpermanentes_5',
+            layerName: 'layer_ZHtemporairesetpermanentes_5',
+            pane: 'pane_ZHtemporairesetpermanentes_5',
+            onEachFeature: pop_ZHtemporairesetpermanentes_5,
+            style: style_ZHtemporairesetpermanentes_5_0,
+        });
+        bounds_group.addLayer(layer_ZHtemporairesetpermanentes_5);
+        map.addLayer(layer_ZHtemporairesetpermanentes_5);
+        function pop_ClassesdepronfondeurmaximalesdesZH_6(feature, layer) {
+        }
+
+        function style_ClassesdepronfondeurmaximalesdesZH_6_0(feature) {
+            switch(String(feature.properties['Cl Prof ZH'])) {
+                case 'A sec':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,74,71,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '1 à 10':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,202,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '11 à 30':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '31 à 50':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,196,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '51 à 80':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,161,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '+ 100':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,117,112,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Inconnu':
+                    return {
+                pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,108,108,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ClassesdepronfondeurmaximalesdesZH_6');
+        map.getPane('pane_ClassesdepronfondeurmaximalesdesZH_6').style.zIndex = 406;
+        map.getPane('pane_ClassesdepronfondeurmaximalesdesZH_6').style['mix-blend-mode'] = 'normal';
+        var layer_ClassesdepronfondeurmaximalesdesZH_6 = new L.geoJson(json_ClassesdepronfondeurmaximalesdesZH_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ClassesdepronfondeurmaximalesdesZH_6',
+            layerName: 'layer_ClassesdepronfondeurmaximalesdesZH_6',
+            pane: 'pane_ClassesdepronfondeurmaximalesdesZH_6',
+            onEachFeature: pop_ClassesdepronfondeurmaximalesdesZH_6,
+            style: style_ClassesdepronfondeurmaximalesdesZH_6_0,
+        });
+        bounds_group.addLayer(layer_ClassesdepronfondeurmaximalesdesZH_6);
+        map.addLayer(layer_ClassesdepronfondeurmaximalesdesZH_6);
+        function pop_Classesdepentesdanslesfriches_7(feature, layer) {
+        }
+
+        function style_Classesdepentesdanslesfriches_7_0(feature) {
+            switch(String(feature.properties['Type 2'])) {
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(59,156,2,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(90,181,4,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,205,6,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,233,8,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,10,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,181,9,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,108,8,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(245,43,6,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'a':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(244,0,6,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Friches':
+                    return {
+                pane: 'pane_Classesdepentesdanslesfriches_7',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,251,255,0.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Classesdepentesdanslesfriches_7');
+        map.getPane('pane_Classesdepentesdanslesfriches_7').style.zIndex = 407;
+        map.getPane('pane_Classesdepentesdanslesfriches_7').style['mix-blend-mode'] = 'normal';
+        var layer_Classesdepentesdanslesfriches_7 = new L.geoJson(json_Classesdepentesdanslesfriches_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Classesdepentesdanslesfriches_7',
+            layerName: 'layer_Classesdepentesdanslesfriches_7',
+            pane: 'pane_Classesdepentesdanslesfriches_7',
+            onEachFeature: pop_Classesdepentesdanslesfriches_7,
+            style: style_Classesdepentesdanslesfriches_7_0,
+        });
+        bounds_group.addLayer(layer_Classesdepentesdanslesfriches_7);
+        map.addLayer(layer_Classesdepentesdanslesfriches_7);
+        function pop_Recouvrementdusoldanslesfriches_8(feature, layer) {
+        }
+
+        function style_Recouvrementdusoldanslesfriches_8_0(feature) {
+            switch(String(feature.properties['Cl Cou sol'])) {
+                case '0 à 25':
+                    return {
+                pane: 'pane_Recouvrementdusoldanslesfriches_8',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,108,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '25 à 50':
+                    return {
+                pane: 'pane_Recouvrementdusoldanslesfriches_8',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(216,202,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '50 à 75':
+                    return {
+                pane: 'pane_Recouvrementdusoldanslesfriches_8',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '75 à 100':
+                    return {
+                pane: 'pane_Recouvrementdusoldanslesfriches_8',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,111,54,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Recouvrementdusoldanslesfriches_8');
+        map.getPane('pane_Recouvrementdusoldanslesfriches_8').style.zIndex = 408;
+        map.getPane('pane_Recouvrementdusoldanslesfriches_8').style['mix-blend-mode'] = 'normal';
+        var layer_Recouvrementdusoldanslesfriches_8 = new L.geoJson(json_Recouvrementdusoldanslesfriches_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Recouvrementdusoldanslesfriches_8',
+            layerName: 'layer_Recouvrementdusoldanslesfriches_8',
+            pane: 'pane_Recouvrementdusoldanslesfriches_8',
+            onEachFeature: pop_Recouvrementdusoldanslesfriches_8,
+            style: style_Recouvrementdusoldanslesfriches_8_0,
+        });
+        bounds_group.addLayer(layer_Recouvrementdusoldanslesfriches_8);
+        map.addLayer(layer_Recouvrementdusoldanslesfriches_8);
+        function pop_Recouvrementarbustifdanslesfriches_9(feature, layer) {
+        }
+
+        function style_Recouvrementarbustifdanslesfriches_9_0(feature) {
+            switch(String(feature.properties['Cl Cou arb'])) {
+                case '0 à 25':
+                    return {
+                pane: 'pane_Recouvrementarbustifdanslesfriches_9',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case '25 à 50':
+                    return {
+                pane: 'pane_Recouvrementarbustifdanslesfriches_9',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,111,54,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Recouvrementarbustifdanslesfriches_9');
+        map.getPane('pane_Recouvrementarbustifdanslesfriches_9').style.zIndex = 409;
+        map.getPane('pane_Recouvrementarbustifdanslesfriches_9').style['mix-blend-mode'] = 'normal';
+        var layer_Recouvrementarbustifdanslesfriches_9 = new L.geoJson(json_Recouvrementarbustifdanslesfriches_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Recouvrementarbustifdanslesfriches_9',
+            layerName: 'layer_Recouvrementarbustifdanslesfriches_9',
+            pane: 'pane_Recouvrementarbustifdanslesfriches_9',
+            onEachFeature: pop_Recouvrementarbustifdanslesfriches_9,
+            style: style_Recouvrementarbustifdanslesfriches_9_0,
+        });
+        bounds_group.addLayer(layer_Recouvrementarbustifdanslesfriches_9);
+        map.addLayer(layer_Recouvrementarbustifdanslesfriches_9);
+        function pop_Typesdhabitats2019_10(feature, layer) {
+        }
+
+        function style_Typesdhabitats2019_10_0(feature) {
+            switch(String(feature.properties['Typ habita'])) {
+                case 'Boisements anciens':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(28,111,54,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Boisements jeunes':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(183,212,151,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Eaux libres':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,196,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Friches sur autres substrats':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(167,60,39,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Friches sur schistes':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(108,108,108,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Habitats anthropiques':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,182,26,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Phragmitaies':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(38,161,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Typhaies':
+                    return {
+                pane: 'pane_Typesdhabitats2019_10',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,74,71,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Typesdhabitats2019_10');
+        map.getPane('pane_Typesdhabitats2019_10').style.zIndex = 410;
+        map.getPane('pane_Typesdhabitats2019_10').style['mix-blend-mode'] = 'normal';
+        var layer_Typesdhabitats2019_10 = new L.geoJson(json_Typesdhabitats2019_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Typesdhabitats2019_10',
+            layerName: 'layer_Typesdhabitats2019_10',
+            pane: 'pane_Typesdhabitats2019_10',
+            onEachFeature: pop_Typesdhabitats2019_10,
+            style: style_Typesdhabitats2019_10_0,
+        });
+        bounds_group.addLayer(layer_Typesdhabitats2019_10);
+        map.addLayer(layer_Typesdhabitats2019_10);
+        function pop_HabitatsWalEUNIS_11(feature, layer) {
+        }
+
+        function style_HabitatsWalEUNIS_11_0(feature) {
+            switch(String(feature.properties['Legende'])) {
+                case 'C1':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(12,160,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'C2':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(29,128,178,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'C3.21':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(12,160,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'C3.23':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(12,160,233,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'C3.5':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'D5.11':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(18,169,167,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'E1.11':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'E1.74':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(195,201,14,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'E2.22':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,221,105,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'E5.6':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'F3.11':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(195,201,14,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'G1.91':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,221,105,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'G1.9a':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,221,105,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'G1.9b':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,221,105,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'G1.C4':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'H2.6':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J2':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J3':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'J4':
+                    return {
+                pane: 'pane_HabitatsWalEUNIS_11',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,143,146,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_HabitatsWalEUNIS_11');
+        map.getPane('pane_HabitatsWalEUNIS_11').style.zIndex = 411;
+        map.getPane('pane_HabitatsWalEUNIS_11').style['mix-blend-mode'] = 'normal';
+        var layer_HabitatsWalEUNIS_11 = new L.geoJson(json_HabitatsWalEUNIS_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_HabitatsWalEUNIS_11',
+            layerName: 'layer_HabitatsWalEUNIS_11',
+            pane: 'pane_HabitatsWalEUNIS_11',
+            onEachFeature: pop_HabitatsWalEUNIS_11,
+            style: style_HabitatsWalEUNIS_11_0,
+        });
+        bounds_group.addLayer(layer_HabitatsWalEUNIS_11);
+        map.addLayer(layer_HabitatsWalEUNIS_11);
+        function pop_DonnesbiologiquesAG2019_12(feature, layer) {
+        }
+
+        function style_DonnesbiologiquesAG2019_12_0() {
+            return {
+                pane: 'pane_DonnesbiologiquesAG2019_12',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(149,106,153,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_DonnesbiologiquesAG2019_12');
+        map.getPane('pane_DonnesbiologiquesAG2019_12').style.zIndex = 412;
+        map.getPane('pane_DonnesbiologiquesAG2019_12').style['mix-blend-mode'] = 'normal';
+        var layer_DonnesbiologiquesAG2019_12 = new L.geoJson(json_DonnesbiologiquesAG2019_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DonnesbiologiquesAG2019_12',
+            layerName: 'layer_DonnesbiologiquesAG2019_12',
+            pane: 'pane_DonnesbiologiquesAG2019_12',
+            onEachFeature: pop_DonnesbiologiquesAG2019_12,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_DonnesbiologiquesAG2019_12_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_DonnesbiologiquesAG2019_12);
+        map.addLayer(layer_DonnesbiologiquesAG2019_12);
+        function pop_Zonedtudeen2019_13(feature, layer) {
+        }
+
+        function style_Zonedtudeen2019_13_0() {
+            return {
+                pane: 'pane_Zonedtudeen2019_13',
+                opacity: 1,
+                color: 'rgba(96,169,180,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(96,169,180,0.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Zonedtudeen2019_13');
+        map.getPane('pane_Zonedtudeen2019_13').style.zIndex = 413;
+        map.getPane('pane_Zonedtudeen2019_13').style['mix-blend-mode'] = 'normal';
+        var layer_Zonedtudeen2019_13 = new L.geoJson(json_Zonedtudeen2019_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Zonedtudeen2019_13',
+            layerName: 'layer_Zonedtudeen2019_13',
+            pane: 'pane_Zonedtudeen2019_13',
+            onEachFeature: pop_Zonedtudeen2019_13,
+            style: style_Zonedtudeen2019_13_0,
+        });
+        bounds_group.addLayer(layer_Zonedtudeen2019_13);
+        map.addLayer(layer_Zonedtudeen2019_13);
+        function pop_Zoneinterditeen2019_14(feature, layer) {
+        }
+
+        function style_Zoneinterditeen2019_14_0() {
+            return {
+                pane: 'pane_Zoneinterditeen2019_14',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(178,16,59,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Zoneinterditeen2019_14');
+        map.getPane('pane_Zoneinterditeen2019_14').style.zIndex = 414;
+        map.getPane('pane_Zoneinterditeen2019_14').style['mix-blend-mode'] = 'normal';
+        var layer_Zoneinterditeen2019_14 = new L.geoJson(json_Zoneinterditeen2019_14, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Zoneinterditeen2019_14',
+            layerName: 'layer_Zoneinterditeen2019_14',
+            pane: 'pane_Zoneinterditeen2019_14',
+            onEachFeature: pop_Zoneinterditeen2019_14,
+            style: style_Zoneinterditeen2019_14_0,
+        });
+        bounds_group.addLayer(layer_Zoneinterditeen2019_14);
+        map.addLayer(layer_Zoneinterditeen2019_14);
+        function pop_Transectsentomologiques2019_15(feature, layer) {
+        }
+
+        function style_Transectsentomologiques2019_15_0(feature) {
+            switch(String(feature.properties['Group taxo'])) {
+                case 'Lépidoptères':
+                    return {
+                pane: 'pane_Transectsentomologiques2019_15',
+                opacity: 1,
+                color: 'rgba(177,0,3,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Odonates':
+                    return {
+                pane: 'pane_Transectsentomologiques2019_15',
+                opacity: 1,
+                color: 'rgba(39,151,167,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Oedipode':
+                    return {
+                pane: 'pane_Transectsentomologiques2019_15',
+                opacity: 1,
+                color: 'rgba(195,201,14,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Transectsentomologiques2019_15');
+        map.getPane('pane_Transectsentomologiques2019_15').style.zIndex = 415;
+        map.getPane('pane_Transectsentomologiques2019_15').style['mix-blend-mode'] = 'normal';
+        var layer_Transectsentomologiques2019_15 = new L.geoJson(json_Transectsentomologiques2019_15, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Transectsentomologiques2019_15',
+            layerName: 'layer_Transectsentomologiques2019_15',
+            pane: 'pane_Transectsentomologiques2019_15',
+            onEachFeature: pop_Transectsentomologiques2019_15,
+            style: style_Transectsentomologiques2019_15_0,
+        });
+        bounds_group.addLayer(layer_Transectsentomologiques2019_15);
+        map.addLayer(layer_Transectsentomologiques2019_15);
+        function pop_Placettesentomologiques2019_16(feature, layer) {
+        }
+
+        function style_Placettesentomologiques2019_16_0(feature) {
+            switch(String(feature.properties['Habitat'])) {
+                case 'Milieu fermé':
+                    return {
+                pane: 'pane_Placettesentomologiques2019_16',
+                radius: 10.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(185,194,7,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Milieu humide':
+                    return {
+                pane: 'pane_Placettesentomologiques2019_16',
+                radius: 10.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,133,152,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Milieu ouvert':
+                    return {
+                pane: 'pane_Placettesentomologiques2019_16',
+                radius: 10.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(177,0,3,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Vasières':
+                    return {
+                pane: 'pane_Placettesentomologiques2019_16',
+                radius: 10.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(76,57,54,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Placettesentomologiques2019_16');
+        map.getPane('pane_Placettesentomologiques2019_16').style.zIndex = 416;
+        map.getPane('pane_Placettesentomologiques2019_16').style['mix-blend-mode'] = 'normal';
+        var layer_Placettesentomologiques2019_16 = new L.geoJson(json_Placettesentomologiques2019_16, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Placettesentomologiques2019_16',
+            layerName: 'layer_Placettesentomologiques2019_16',
+            pane: 'pane_Placettesentomologiques2019_16',
+            onEachFeature: pop_Placettesentomologiques2019_16,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Placettesentomologiques2019_16_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Placettesentomologiques2019_16);
+        map.addLayer(layer_Placettesentomologiques2019_16);
+        function pop_PhasageduprojetZones_17(feature, layer) {
+        }
+
+        function style_PhasageduprojetZones_17_0(feature) {
+            switch(String(feature.properties['Nom Zone'])) {
+                case '1':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(218,86,13,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '2':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,10,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '3E':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '3W':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(251,181,9,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '4E':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '4W':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '5':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(143,142,191,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '6':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,10,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '7':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(226,224,35,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '8':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(199,109,219,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '9':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(244,0,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '10-1':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '10-2':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '10-3':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(254,254,254,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '10-4':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '11':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(64,255,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '12':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(129,194,211,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '13':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(54,13,106,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '14':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(252,195,10,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '15':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(139,255,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '16':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(139,255,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case '17':
+                    return {
+                pane: 'pane_PhasageduprojetZones_17',
+                opacity: 1,
+                color: 'rgba(193,177,208,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PhasageduprojetZones_17');
+        map.getPane('pane_PhasageduprojetZones_17').style.zIndex = 417;
+        map.getPane('pane_PhasageduprojetZones_17').style['mix-blend-mode'] = 'normal';
+        var layer_PhasageduprojetZones_17 = new L.geoJson(json_PhasageduprojetZones_17, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PhasageduprojetZones_17',
+            layerName: 'layer_PhasageduprojetZones_17',
+            pane: 'pane_PhasageduprojetZones_17',
+            onEachFeature: pop_PhasageduprojetZones_17,
+            style: style_PhasageduprojetZones_17_0,
+        });
+        bounds_group.addLayer(layer_PhasageduprojetZones_17);
+        map.addLayer(layer_PhasageduprojetZones_17);
+        function pop_Donnesodonatesremarquables2019_18(feature, layer) {
+        }
+
+        function style_Donnesodonatesremarquables2019_18_0(feature) {
+            switch(String(feature.properties['nom scient'])) {
+                case 'Sympecma fusca':
+                    return {
+                pane: 'pane_Donnesodonatesremarquables2019_18',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,178,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ischnura pumilio':
+                    return {
+                pane: 'pane_Donnesodonatesremarquables2019_18',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,141,60,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Aeshna affinis':
+                    return {
+                pane: 'pane_Donnesodonatesremarquables2019_18',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,0,38,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Donnesodonatesremarquables2019_18');
+        map.getPane('pane_Donnesodonatesremarquables2019_18').style.zIndex = 418;
+        map.getPane('pane_Donnesodonatesremarquables2019_18').style['mix-blend-mode'] = 'normal';
+        var layer_Donnesodonatesremarquables2019_18 = new L.geoJson(json_Donnesodonatesremarquables2019_18, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Donnesodonatesremarquables2019_18',
+            layerName: 'layer_Donnesodonatesremarquables2019_18',
+            pane: 'pane_Donnesodonatesremarquables2019_18',
+            onEachFeature: pop_Donnesodonatesremarquables2019_18,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Donnesodonatesremarquables2019_18_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Donnesodonatesremarquables2019_18);
+        map.addLayer(layer_Donnesodonatesremarquables2019_18);
+        function pop_Donnesherptologiques2019_19(feature, layer) {
+        }
+
+        function style_Donnesherptologiques2019_19_0(feature) {
+            switch(String(feature.properties['nom scient'])) {
+                case 'Anguis fragilis':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                shape: 'diamond',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Alytes obstetricans':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,99,62,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Bufo bufo':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                shape: 'triangle',
+                radius: 7.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,174,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Epidalea calamita':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                shape: 'diamond',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,214,144,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ichtyosaura alpestris':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,191,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lissotriton helveticus':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                shape: 'triangle',
+                radius: 7.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,238,177,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lissotriton spec.':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                shape: 'diamond',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,221,164,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lissotriton vulgaris':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(107,176,175,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pelophylax spec.':
+                    return {
+                pane: 'pane_Donnesherptologiques2019_19',
+                shape: 'triangle',
+                radius: 7.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Donnesherptologiques2019_19');
+        map.getPane('pane_Donnesherptologiques2019_19').style.zIndex = 419;
+        map.getPane('pane_Donnesherptologiques2019_19').style['mix-blend-mode'] = 'normal';
+        var layer_Donnesherptologiques2019_19 = new L.geoJson(json_Donnesherptologiques2019_19, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Donnesherptologiques2019_19',
+            layerName: 'layer_Donnesherptologiques2019_19',
+            pane: 'pane_Donnesherptologiques2019_19',
+            onEachFeature: pop_Donnesherptologiques2019_19,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Donnesherptologiques2019_19_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Donnesherptologiques2019_19);
+        map.addLayer(layer_Donnesherptologiques2019_19);
+        function pop_Donnesfloreavant2019_20(feature, layer) {
+        }
+
+        function style_Donnesfloreavant2019_20_0() {
+            return {
+                pane: 'pane_Donnesfloreavant2019_20',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Donnesfloreavant2019_20');
+        map.getPane('pane_Donnesfloreavant2019_20').style.zIndex = 420;
+        map.getPane('pane_Donnesfloreavant2019_20').style['mix-blend-mode'] = 'normal';
+        var layer_Donnesfloreavant2019_20 = new L.geoJson(json_Donnesfloreavant2019_20, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Donnesfloreavant2019_20',
+            layerName: 'layer_Donnesfloreavant2019_20',
+            pane: 'pane_Donnesfloreavant2019_20',
+            onEachFeature: pop_Donnesfloreavant2019_20,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Donnesfloreavant2019_20_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Donnesfloreavant2019_20);
+        map.addLayer(layer_Donnesfloreavant2019_20);
+        function pop_Donnesflore2019_21(feature, layer) {
+        }
+
+        function style_Donnesflore2019_21_0(feature) {
+            switch(String(feature.properties['Categorie_'])) {
+                case 'Groupe d�rogation':
+                    return {
+                pane: 'pane_Donnesflore2019_21',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,204,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Autres esp�ce remarquables':
+                    return {
+                pane: 'pane_Donnesflore2019_21',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(120,198,121,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Autres esp�ces v�g�tales':
+                    return {
+                pane: 'pane_Donnesflore2019_21',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,104,55,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Donnesflore2019_21');
+        map.getPane('pane_Donnesflore2019_21').style.zIndex = 421;
+        map.getPane('pane_Donnesflore2019_21').style['mix-blend-mode'] = 'normal';
+        var layer_Donnesflore2019_21 = new L.geoJson(json_Donnesflore2019_21, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Donnesflore2019_21',
+            layerName: 'layer_Donnesflore2019_21',
+            pane: 'pane_Donnesflore2019_21',
+            onEachFeature: pop_Donnesflore2019_21,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Donnesflore2019_21_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Donnesflore2019_21);
+        map.addLayer(layer_Donnesflore2019_21);
+        function pop_Espcesvgtaleexotiquesenvahissantes2019_22(feature, layer) {
+        }
+
+        function style_Espcesvgtaleexotiquesenvahissantes2019_22_0(feature) {
+            switch(String(feature.properties['Nom scient'])) {
+                case 'Buddleja davidii':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,178,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Cotoneaster horizontalis':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,225,128,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Fallopia japonica':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                shape: 'diamond',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,195,87,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Prunus serotina':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,159,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Quercus rubra':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(249,117,52,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Robinia pseudoacacia':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(241,70,36,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Senecio inaequidens':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                shape: 'diamond',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(218,33,34,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Solidago gigantea':
+                    return {
+                pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(189,0,38,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Espcesvgtaleexotiquesenvahissantes2019_22');
+        map.getPane('pane_Espcesvgtaleexotiquesenvahissantes2019_22').style.zIndex = 422;
+        map.getPane('pane_Espcesvgtaleexotiquesenvahissantes2019_22').style['mix-blend-mode'] = 'normal';
+        var layer_Espcesvgtaleexotiquesenvahissantes2019_22 = new L.geoJson(json_Espcesvgtaleexotiquesenvahissantes2019_22, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Espcesvgtaleexotiquesenvahissantes2019_22',
+            layerName: 'layer_Espcesvgtaleexotiquesenvahissantes2019_22',
+            pane: 'pane_Espcesvgtaleexotiquesenvahissantes2019_22',
+            onEachFeature: pop_Espcesvgtaleexotiquesenvahissantes2019_22,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Espcesvgtaleexotiquesenvahissantes2019_22_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Espcesvgtaleexotiquesenvahissantes2019_22);
+        map.addLayer(layer_Espcesvgtaleexotiquesenvahissantes2019_22);
+        function pop_Stationsfloregroupedrogation2019_23(feature, layer) {
+        }
+
+        function style_Stationsfloregroupedrogation2019_23_0(feature) {
+            switch(String(feature.properties['Taxon'])) {
+                case 'Centaurium erythraea':
+                    return {
+                pane: 'pane_Stationsfloregroupedrogation2019_23',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Centaurium pulchellum':
+                    return {
+                pane: 'pane_Stationsfloregroupedrogation2019_23',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,174,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Dactylorhiza maculata subsp. fuchsii':
+                    return {
+                pane: 'pane_Stationsfloregroupedrogation2019_23',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,191,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Limosella aquatica':
+                    return {
+                pane: 'pane_Stationsfloregroupedrogation2019_23',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,221,164,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pyrola minor':
+                    return {
+                pane: 'pane_Stationsfloregroupedrogation2019_23',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Stationsfloregroupedrogation2019_23');
+        map.getPane('pane_Stationsfloregroupedrogation2019_23').style.zIndex = 423;
+        map.getPane('pane_Stationsfloregroupedrogation2019_23').style['mix-blend-mode'] = 'normal';
+        var layer_Stationsfloregroupedrogation2019_23 = new L.geoJson(json_Stationsfloregroupedrogation2019_23, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Stationsfloregroupedrogation2019_23',
+            layerName: 'layer_Stationsfloregroupedrogation2019_23',
+            pane: 'pane_Stationsfloregroupedrogation2019_23',
+            onEachFeature: pop_Stationsfloregroupedrogation2019_23,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Stationsfloregroupedrogation2019_23_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Stationsfloregroupedrogation2019_23);
+        map.addLayer(layer_Stationsfloregroupedrogation2019_23);
+        function pop_Stationsfloreremarquable2019_24(feature, layer) {
+        }
+
+        function style_Stationsfloreremarquable2019_24_0(feature) {
+            switch(String(feature.properties['Nom scient'])) {
+                case 'Aira praecox':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Campanula rapunculus':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'square',
+                radius: 5.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,54,41,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Cerastium pumilum':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(230,84,55,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Chara vulgaris var. vulgaris':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(237,114,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Epilobium lanceolatum':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(245,144,83,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Epipactis helleborine':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'diamond',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,174,97,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Filago minima':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,190,115,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Herniaria glabra':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'square',
+                radius: 5.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,206,134,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Hieracium praealtum':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,222,153,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lemna trisulca':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(254,238,172,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Potentilla argentea':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,191,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Potentilla intermedia':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'diamond',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(238,248,185,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Potentilla norvegica':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,241,180,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Ranunculus sardous':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'square',
+                radius: 5.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(204,234,174,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Rumex scutatus':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(187,227,169,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sagina apetala + Sagina micropetala':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(171,221,164,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sagina micropetala':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,203,168,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Spergularia rubra':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'diamond',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(119,185,172,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Typha angustifolia':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(94,167,177,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Verbascum densiflorum':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                shape: 'square',
+                radius: 5.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,149,181,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Potamogeton pectinatus':
+                    return {
+                pane: 'pane_Stationsfloreremarquable2019_24',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(43,131,186,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Stationsfloreremarquable2019_24');
+        map.getPane('pane_Stationsfloreremarquable2019_24').style.zIndex = 424;
+        map.getPane('pane_Stationsfloreremarquable2019_24').style['mix-blend-mode'] = 'normal';
+        var layer_Stationsfloreremarquable2019_24 = new L.geoJson(json_Stationsfloreremarquable2019_24, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Stationsfloreremarquable2019_24',
+            layerName: 'layer_Stationsfloreremarquable2019_24',
+            pane: 'pane_Stationsfloreremarquable2019_24',
+            onEachFeature: pop_Stationsfloreremarquable2019_24,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Stationsfloreremarquable2019_24_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Stationsfloreremarquable2019_24);
+        map.addLayer(layer_Stationsfloreremarquable2019_24);
+        var layer_Orthophotoplans2018_25 = L.WMS.layer("http://geoservices.wallonie.be/arcgis/services/IMAGERIE/ORTHO_2018/MapServer/WMSServer?", "0", {
+            format: 'image/jpeg',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+            attribution: '',
+        });
+        map.addLayer(layer_Orthophotoplans2018_25);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{"Orthophotoplans 2018": layer_Orthophotoplans2018_25,'Stations flore remarquable 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Airapraecox0.png" /></td><td>Aira praecox</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Campanularapunculus1.png" /></td><td>Campanula rapunculus</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Cerastiumpumilum2.png" /></td><td>Cerastium pumilum</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Charavulgarisvarvulgaris3.png" /></td><td>Chara vulgaris var. vulgaris</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Epilobiumlanceolatum4.png" /></td><td>Epilobium lanceolatum</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Epipactishelleborine5.png" /></td><td>Epipactis helleborine</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Filagominima6.png" /></td><td>Filago minima</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Herniariaglabra7.png" /></td><td>Herniaria glabra</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Hieraciumpraealtum8.png" /></td><td>Hieracium praealtum</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Lemnatrisulca9.png" /></td><td>Lemna trisulca</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Potentillaargentea10.png" /></td><td>Potentilla argentea</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Potentillaintermedia11.png" /></td><td>Potentilla intermedia</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Potentillanorvegica12.png" /></td><td>Potentilla norvegica</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Ranunculussardous13.png" /></td><td>Ranunculus sardous</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Rumexscutatus14.png" /></td><td>Rumex scutatus</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Saginaapetalasl15.png" /></td><td>Sagina apetala s.l.</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Saginamicropetala16.png" /></td><td>Sagina micropetala</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Spergulariarubra17.png" /></td><td>Spergularia rubra</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Typhaangustifolia18.png" /></td><td>Typha angustifolia</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Verbascumdensiflorum19.png" /></td><td>Verbascum densiflorum</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloreremarquable2019_24_Potamogetonpectinatus20.png" /></td><td>Potamogeton pectinatus</td></tr></table>': layer_Stationsfloreremarquable2019_24,'Stations flore groupe dérogation 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Stationsfloregroupedrogation2019_23_Centauriumerythraea0.png" /></td><td>Centaurium erythraea</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloregroupedrogation2019_23_Centauriumpulchellum1.png" /></td><td>Centaurium pulchellum</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloregroupedrogation2019_23_Dactylorhizamaculatasubspfuchsii2.png" /></td><td>Dactylorhiza maculata subsp. fuchsii</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloregroupedrogation2019_23_Limosellaaquatica3.png" /></td><td>Limosella aquatica</td></tr><tr><td style="text-align: center;"><img src="legend/Stationsfloregroupedrogation2019_23_Pyrolaminor4.png" /></td><td>Pyrola minor</td></tr></table>': layer_Stationsfloregroupedrogation2019_23,'Espèces végétale exotiques envahissantes 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Buddlejadavidii0.png" /></td><td>Buddleja davidii</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Cotoneasterhorizontalis1.png" /></td><td>Cotoneaster horizontalis</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Fallopiajaponica2.png" /></td><td>Fallopia japonica</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Prunusserotina3.png" /></td><td>Prunus serotina</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Quercusrubra4.png" /></td><td>Quercus rubra</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Robiniapseudoacacia5.png" /></td><td>Robinia pseudoacacia</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Senecioinaequidens6.png" /></td><td>Senecio inaequidens</td></tr><tr><td style="text-align: center;"><img src="legend/Espcesvgtaleexotiquesenvahissantes2019_22_Solidagogigantea7.png" /></td><td>Solidago gigantea</td></tr></table>': layer_Espcesvgtaleexotiquesenvahissantes2019_22,'Données flore 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Donnesflore2019_21_Groupedérogation0.png" /></td><td>Groupe dérogation</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesflore2019_21_Autresespèceremarquables1.png" /></td><td>Autres espèce remarquables</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesflore2019_21_Autresespècesvégétales2.png" /></td><td>Autres espèces végétales</td></tr></table>': layer_Donnesflore2019_21,'<img src="legend/Donnesfloreavant2019_20.png" /> Données flore avant 2019': layer_Donnesfloreavant2019_20,'Données herpétologiques 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Orvetfragile0.png" /></td><td>Orvet fragile</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Alyteaccoucheur1.png" /></td><td>Alyte accoucheur</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Crapaudcommun2.png" /></td><td>Crapaud commun</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Crapaudcalamite3.png" /></td><td>Crapaud calamite</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Tritonalpestre4.png" /></td><td>Triton alpestre</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Triatonpalmé5.png" /></td><td>Triaton palmé</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Tritonindéterminé6.png" /></td><td>Triton indéterminé</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Tritonponctué7.png" /></td><td>Triton ponctué</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesherptologiques2019_19_Grenouillevertesl8.png" /></td><td>Grenouille verte s.l.</td></tr></table>': layer_Donnesherptologiques2019_19,'Données odonates remarquables 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Donnesodonatesremarquables2019_18_Lestebrun0.png" /></td><td>Leste brun</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesodonatesremarquables2019_18_Agrionnain1.png" /></td><td>Agrion nain</td></tr><tr><td style="text-align: center;"><img src="legend/Donnesodonatesremarquables2019_18_Aeschneaffine2.png" /></td><td>Aeschne affine</td></tr></table>': layer_Donnesodonatesremarquables2019_18,'Phasage du projet (Zones)<br /><table><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_10.png" /></td><td>1</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_21.png" /></td><td>2</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_3E2.png" /></td><td>3E</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_3W3.png" /></td><td>3W</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_4E4.png" /></td><td>4E</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_4W5.png" /></td><td>4W</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_56.png" /></td><td>5</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_67.png" /></td><td>6</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_78.png" /></td><td>7</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_89.png" /></td><td>8</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_910.png" /></td><td>9</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_10111.png" /></td><td>10-1</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_10212.png" /></td><td>10-2</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_10313.png" /></td><td>10-3</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_10414.png" /></td><td>10-4</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1115.png" /></td><td>11</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1216.png" /></td><td>12</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1317.png" /></td><td>13</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1418.png" /></td><td>14</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1519.png" /></td><td>15</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1620.png" /></td><td>16</td></tr><tr><td style="text-align: center;"><img src="legend/PhasageduprojetZones_17_1721.png" /></td><td>17</td></tr></table>': layer_PhasageduprojetZones_17,'Placettes entomologiques 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Placettesentomologiques2019_16_Milieufermé0.png" /></td><td>Milieu fermé</td></tr><tr><td style="text-align: center;"><img src="legend/Placettesentomologiques2019_16_Milieuhumide1.png" /></td><td>Milieu humide</td></tr><tr><td style="text-align: center;"><img src="legend/Placettesentomologiques2019_16_Milieuouvert2.png" /></td><td>Milieu ouvert</td></tr><tr><td style="text-align: center;"><img src="legend/Placettesentomologiques2019_16_Vasières3.png" /></td><td>Vasières</td></tr></table>': layer_Placettesentomologiques2019_16,'Transects entomologiques 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Transectsentomologiques2019_15_Lépidoptères0.png" /></td><td>Lépidoptères</td></tr><tr><td style="text-align: center;"><img src="legend/Transectsentomologiques2019_15_Odonates1.png" /></td><td>Odonates</td></tr><tr><td style="text-align: center;"><img src="legend/Transectsentomologiques2019_15_Oedipode2.png" /></td><td>Oedipode</td></tr></table>': layer_Transectsentomologiques2019_15,'<img src="legend/Zoneinterditeen2019_14.png" /> Zone interdite en 2019': layer_Zoneinterditeen2019_14,'<img src="legend/Zonedtudeen2019_13.png" /> Zone d\'étude en 2019': layer_Zonedtudeen2019_13,'<img src="legend/DonnesbiologiquesAG2019_12.png" /> Données biologiques A&G 2019': layer_DonnesbiologiquesAG2019_12,'Habitats WalEUNIS<br /><table><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Eauxstagnantes0.png" /></td><td>Eaux stagnantes</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Sourceseteauxcourantesdesurface1.png" /></td><td>Sources et eaux courantes de surface</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Phragmitaiesroselièresvraies2.png" /></td><td>Phragmitaies (roselières « vraies »)</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Typhaies3.png" /></td><td>Typhaies</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Végétationpionnièreetéphémèredesrivespériodiquementexondées4.png" /></td><td>Végétation pionnière et éphémère des rives périodiquement exondées</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Roselièressèches5.png" /></td><td>Roselières sèches</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Communautésàespècesannuellesetsucculentesdessubstratsrocheuxdétritiquesthermophilescalcarifères6.png" /></td><td>Communautés à espèces annuelles et succulentes des substrats rocheux (détritiques) thermophiles (+/- calcarifères)</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_FormationsàCalamagostrisepigeos7.png" /></td><td>Formations à [Calamagostris epigeos]</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Prairiesdefauchedebassealtitudepeuàmoyennementfertilisées8.png" /></td><td>Prairies de fauche de basse altitude peu à moyennement fertilisées</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Végétationsrudérales9.png" /></td><td>Végétations rudérales</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Fourréssursolsneutroclinesàacidoclinesfrais10.png" /></td><td>Fourrés sur sols neutroclines à acidoclines, frais</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Boulaiessurterrainnonmarécageux11.png" /></td><td>Boulaies sur terrain non marécageux</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Forêtsmélangéesàbouleautremblesorbierdesoiseleursetousaulemarsault12.png" /></td><td>Forêts mélangées à bouleau, tremble, sorbier des oiseleurs et/ou saule marsault</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Saulaiesdecolonisationouderecolonisation13.png" /></td><td>Saulaies de colonisation ou de recolonisation</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Autrespeuplementsfeuillushautementartificiels14.png" /></td><td>Autres peuplements feuillus hautement artificiels</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Eboulissurrochescalcaires15.png" /></td><td>Eboulis sur roches calcaires</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Constructionsàfaibledensité16.png" /></td><td>Constructions à faible densité</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Sitesindustrielsextractifs17.png" /></td><td>Sites industriels extractifs</td></tr><tr><td style="text-align: center;"><img src="legend/HabitatsWalEUNIS_11_Réseauxdetransport18.png" /></td><td>Réseaux de transport</td></tr></table>': layer_HabitatsWalEUNIS_11,'Types d\'habitats 2019<br /><table><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Boisementsanciens0.png" /></td><td>Boisements anciens</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Boisementsjeunes1.png" /></td><td>Boisements jeunes</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Eauxlibres2.png" /></td><td>Eaux libres</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Frichessurautressubstrats3.png" /></td><td>Friches sur autres substrats</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Frichessurschistes4.png" /></td><td>Friches sur schistes</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Habitatsanthropiques5.png" /></td><td>Habitats anthropiques</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Phragmitaies6.png" /></td><td>Phragmitaies</td></tr><tr><td style="text-align: center;"><img src="legend/Typesdhabitats2019_10_Typhaies7.png" /></td><td>Typhaies</td></tr></table>': layer_Typesdhabitats2019_10,'Recouvrement arbustif dans les friches<br /><table><tr><td style="text-align: center;"><img src="legend/Recouvrementarbustifdanslesfriches_9_0à250.png" /></td><td>0 à 25 %</td></tr><tr><td style="text-align: center;"><img src="legend/Recouvrementarbustifdanslesfriches_9_25à501.png" /></td><td>25 à 50 %</td></tr></table>': layer_Recouvrementarbustifdanslesfriches_9,'Recouvrement du sol dans les friches<br /><table><tr><td style="text-align: center;"><img src="legend/Recouvrementdusoldanslesfriches_8_0à250.png" /></td><td>0 à 25 %</td></tr><tr><td style="text-align: center;"><img src="legend/Recouvrementdusoldanslesfriches_8_25à501.png" /></td><td>25 à 50 %</td></tr><tr><td style="text-align: center;"><img src="legend/Recouvrementdusoldanslesfriches_8_50à752.png" /></td><td>50 à 75 %</td></tr><tr><td style="text-align: center;"><img src="legend/Recouvrementdusoldanslesfriches_8_75à1003.png" /></td><td>75 à 100 %</td></tr></table>': layer_Recouvrementdusoldanslesfriches_8,'Classes de pentes dans les friches<br /><table><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_10.png" /></td><td><1 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_131.png" /></td><td>1-3 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_352.png" /></td><td>3-5 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_573.png" /></td><td>5-7 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_7104.png" /></td><td>7-10 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_10155.png" /></td><td>10-15 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_15276.png" /></td><td>15-27 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_27587.png" /></td><td>27-58 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_588.png" /></td><td>>58 %</td></tr><tr><td style="text-align: center;"><img src="legend/Classesdepentesdanslesfriches_7_Friches9.png" /></td><td>Friches</td></tr></table>': layer_Classesdepentesdanslesfriches_7,'Classes de pronfondeur maximales des ZH<br /><table><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_Asec0.png" /></td><td>A sec</td></tr><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_1à10cm1.png" /></td><td>1 à 10 cm</td></tr><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_11à30cm2.png" /></td><td>11 à 30 cm</td></tr><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_31à50cm3.png" /></td><td>31 à 50 cm</td></tr><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_51à80cm4.png" /></td><td>51 à 80 cm</td></tr><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_100cm5.png" /></td><td>> 100 cm</td></tr><tr><td style="text-align: center;"><img src="legend/ClassesdepronfondeurmaximalesdesZH_6_Inconnu6.png" /></td><td>Inconnu</td></tr></table>': layer_ClassesdepronfondeurmaximalesdesZH_6,'ZH temporaires et permanentes<br /><table><tr><td style="text-align: center;"><img src="legend/ZHtemporairesetpermanentes_5_ZHpermanentes0.png" /></td><td>ZH permanentes</td></tr><tr><td style="text-align: center;"><img src="legend/ZHtemporairesetpermanentes_5_ZHtemporaires1.png" /></td><td>ZH temporaires</td></tr><tr><td style="text-align: center;"><img src="legend/ZHtemporairesetpermanentes_5_Assecpermanent2.png" /></td><td>Assec permanent</td></tr></table>': layer_ZHtemporairesetpermanentes_5,'Ensoleillement des ZH<br /><table><tr><td style="text-align: center;"><img src="legend/EnsoleillementdesZH_4_Nul0.png" /></td><td>Nul</td></tr><tr><td style="text-align: center;"><img src="legend/EnsoleillementdesZH_4_Quasinul1.png" /></td><td>Quasi nul</td></tr><tr><td style="text-align: center;"><img src="legend/EnsoleillementdesZH_4_Partiel2.png" /></td><td>Partiel</td></tr><tr><td style="text-align: center;"><img src="legend/EnsoleillementdesZH_4_Presquetotal3.png" /></td><td>Presque total</td></tr><tr><td style="text-align: center;"><img src="legend/EnsoleillementdesZH_4_Total4.png" /></td><td>Total</td></tr></table>': layer_EnsoleillementdesZH_4,'Inclinaison des berges des ZH<br /><table><tr><td style="text-align: center;"><img src="legend/InclinaisondesbergesdesZH_3_Faible0.png" /></td><td>Faible</td></tr><tr><td style="text-align: center;"><img src="legend/InclinaisondesbergesdesZH_3_Moyenne1.png" /></td><td>Moyenne</td></tr><tr><td style="text-align: center;"><img src="legend/InclinaisondesbergesdesZH_3_Moyenneàforte2.png" /></td><td>Moyenne à forte</td></tr><tr><td style="text-align: center;"><img src="legend/InclinaisondesbergesdesZH_3_Forte3.png" /></td><td>Forte</td></tr></table>': layer_InclinaisondesbergesdesZH_3,'Qualité de l\'eau des ZN<br /><table><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Boueuse0.png" /></td><td>Boueuse</td></tr><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Fluctuante1.png" /></td><td>Fluctuante</td></tr><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Trouble2.png" /></td><td>Trouble</td></tr><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Mésotrophe3.png" /></td><td>Mésotrophe</td></tr><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Eutrophe4.png" /></td><td>Eutrophe</td></tr><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Asec5.png" /></td><td>A sec</td></tr><tr><td style="text-align: center;"><img src="legend/QualitdeleaudesZN_2_Bonne6.png" /></td><td>Bonne</td></tr></table>': layer_QualitdeleaudesZN_2,"Pentes (partie Nord)": layer_PentespartieNord_1,"Pentes (Partie Sud)": layer_PentesPartieSud_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_Zoneinterditeen2019_14.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Acces'] !== null?String('<div style="color: #000000; font-size: 13pt; font-family: \'.SF NS Text\', sans-serif;">' + layer.feature.properties['Acces']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Zoneinterditeen2019_14'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Transectsentomologiques2019_15.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nom'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'.SF NS Text\', sans-serif;">' + layer.feature.properties['Nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Transectsentomologiques2019_15'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Placettesentomologiques2019_16.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nom'] !== null?String('<div style="color: #000000; font-size: 13pt; font-family: \'.SF NS Text\', sans-serif;">' + layer.feature.properties['Nom']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Placettesentomologiques2019_16'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_PhasageduprojetZones_17.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nom Zone'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'.SF NS Text\', sans-serif;">' + layer.feature.properties['Nom Zone']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_PhasageduprojetZones_17'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Stationsfloregroupedrogation2019_23.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Etiquette'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'.SF NS Text\', sans-serif;">' + layer.feature.properties['Etiquette']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Stationsfloregroupedrogation2019_23'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_HabitatsWalEUNIS_11,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'ID bis'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        L.ImageOverlay.include({
+            getBounds: function () {
+                return this._bounds;
+            }
+        });
+        resetLabels([layer_Zoneinterditeen2019_14,layer_Transectsentomologiques2019_15,layer_Placettesentomologiques2019_16,layer_PhasageduprojetZones_17,layer_Donnesodonatesremarquables2019_18,layer_Donnesherptologiques2019_19,layer_Stationsfloregroupedrogation2019_23]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Zoneinterditeen2019_14,layer_Transectsentomologiques2019_15,layer_Placettesentomologiques2019_16,layer_PhasageduprojetZones_17,layer_Donnesodonatesremarquables2019_18,layer_Donnesherptologiques2019_19,layer_Stationsfloregroupedrogation2019_23]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Zoneinterditeen2019_14,layer_Transectsentomologiques2019_15,layer_Placettesentomologiques2019_16,layer_PhasageduprojetZones_17,layer_Donnesodonatesremarquables2019_18,layer_Donnesherptologiques2019_19,layer_Stationsfloregroupedrogation2019_23]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Zoneinterditeen2019_14,layer_Transectsentomologiques2019_15,layer_Placettesentomologiques2019_16,layer_PhasageduprojetZones_17,layer_Donnesodonatesremarquables2019_18,layer_Donnesherptologiques2019_19,layer_Stationsfloregroupedrogation2019_23]);
+        });
+        </script>
+    </body>
+</html>
